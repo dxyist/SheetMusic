@@ -46,6 +46,8 @@
     <string name="note_naming_english">English (C,D,E,F,G,A,B)</string>
     <string name="note_naming_italian">Italian (Do,Re,Mi,Fa,Sol,La,Si)</string>
     <string name="difficulty_level">Difficulty level</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_reading">ReadingActivity</string>
 
 
 </resources>
