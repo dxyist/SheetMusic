@@ -24,16 +24,16 @@
         android:textSize="16dp" />
 
     <RelativeLayout
-        android:id="@+id/relativeLayout"
+        android:id="@+id/rlayout_clefs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView"
-        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/img_both_clef"
             android:layout_width="60dp"
             android:layout_height="85dp"
             android:layout_gravity="center"
@@ -42,7 +42,7 @@
             android:src="@mipmap/sheet_both_touched" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/img_treble_clef"
             android:layout_width="60dp"
             android:layout_height="85dp"
             android:layout_alignParentTop="true"
@@ -51,7 +51,7 @@
             android:src="@mipmap/sheet_high_untouched" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/img_bass_clef"
             android:layout_width="60dp"
             android:layout_height="85dp"
             android:layout_alignParentEnd="true"
@@ -61,48 +61,52 @@
             android:src="@mipmap/sheet_low_untouched" />
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="#4FC684"
-        android:focusableInTouchMode="true"
-        android:text="开始练习"
-        android:textColor="#FFFFFF" />
 
     <ImageView
+        android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:id="@+id/imageView4"
-        android:layout_below="@+id/relativeLayout"
+        android:layout_below="@+id/rlayout_clefs"
         android:layout_centerHorizontal="true"
         android:background="#8c8c8c" />
 
-    <TextView
-        android:id="@+id/textView2"
+    <com.ecnu.leondu.sheetmusic.MyView
+        android:id="@+id/anim_great"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <ImageView
+        android:id="@+id/img_line2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/txt_sign1"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp"
+        android:background="#8c8c8c" />
+
+    <TextView
+        android:id="@+id/txt_sign1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rlayout_notes"
+        android:layout_centerHorizontal="true"
         android:text="复音类型"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="16dp"
-        android:layout_below="@+id/imageView4"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp" />
+        android:textSize="16dp" />
 
     <RelativeLayout
-        android:id="@+id/relativeLayout2"
+        android:id="@+id/rlayout_notes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_beginning"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:orientation="horizontal"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true">
+        android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/img_notes_one"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
@@ -111,7 +115,7 @@
             android:src="@mipmap/key_one_touched" />
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/img_notes_two"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_alignParentTop="true"
@@ -120,7 +124,7 @@
             android:src="@mipmap/key_two_untouched" />
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/img_notes_three"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_alignParentEnd="true"
@@ -130,13 +134,17 @@
             android:src="@mipmap/key_three_untouched" />
     </RelativeLayout>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:id="@+id/imageView8"
-        android:background="#8c8c8c"
-        android:layout_alignTop="@+id/textView2"
-        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/btn_beginning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#4FC684"
+        android:focusableInTouchMode="true"
+        android:text="开始练习"
+        android:textColor="#FFFFFF" />
 
 
 </RelativeLayout>

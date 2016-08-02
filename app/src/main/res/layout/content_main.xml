@@ -14,16 +14,16 @@
 
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/imgButton_reading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageButton2"
+        android:layout_alignBottom="@+id/imgButton_listening"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="5dp"
         android:src="@mipmap/reading_sheet_down" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/imgButton_listening"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -31,5 +31,16 @@
         android:layout_marginTop="16dp"
         android:src="@mipmap/listen_sheet_down" />
 
+    <TextView
+        android:id="@+id/txt_display"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/textview_bg"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:text="等待数据输入"
+        android:textIsSelectable="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/imgButton_reading" />
 
 </RelativeLayout>

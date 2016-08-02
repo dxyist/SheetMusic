@@ -9,11 +9,28 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 public class ReadingActivity extends AppCompatActivity {
+
+    private MyView myView;
+    // 复音数目
+    public static int noteNumber = 0;
+    public static int clefNumber = 0;
+
+
+    private ImageView noteOneImageView;
+    private ImageView noteTwoImageView;
+    private ImageView noteThreeImageView;
+
+    private ImageView clefBothImageView;
+    private ImageView clefTrebleImageView;
+    private ImageView clefBassImageView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,16 +58,135 @@ public class ReadingActivity extends AppCompatActivity {
                 window.setStatusBarColor(color);
             }
         }
-
         setSupportActionBar(toolbar);
+
+        myView = (MyView) findViewById(R.id.anim_great);
+        noteOneImageView = (ImageView) findViewById(R.id.img_notes_one);
+        if (noteNumber == 1)
+        {
+            noteOneImageView.setImageResource(R.mipmap.key_one_touched);
+        }
+        else{
+            noteOneImageView.setImageResource(R.mipmap.key_one_untouched);
+        }
+
+        noteOneImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                noteNumber = 1;
+                noteOneImageView.setImageResource(R.mipmap.key_one_touched);
+                noteTwoImageView.setImageResource(R.mipmap.key_two_untouched);
+                noteThreeImageView.setImageResource(R.mipmap.key_three_untouched);
+            }
+        });
+
+        noteTwoImageView = (ImageView) findViewById(R.id.img_notes_two);
+        if (noteNumber == 2)
+        {
+            noteTwoImageView.setImageResource(R.mipmap.key_two_touched);
+        }
+        else{
+            noteTwoImageView.setImageResource(R.mipmap.key_two_untouched);
+
+        }
+        noteTwoImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                noteNumber = 2;
+                noteOneImageView.setImageResource(R.mipmap.key_one_untouched);
+                noteTwoImageView.setImageResource(R.mipmap.key_two_touched);
+                noteThreeImageView.setImageResource(R.mipmap.key_three_untouched);
+            }
+        });
+
+        noteThreeImageView = (ImageView) findViewById(R.id.img_notes_three);
+        if (noteNumber == 3)
+        {
+            noteThreeImageView.setImageResource(R.mipmap.key_three_touched);
+        }
+        else{
+            noteThreeImageView.setImageResource(R.mipmap.key_three_untouched);
+
+        }
+        noteThreeImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                noteNumber = 3;
+                noteOneImageView.setImageResource(R.mipmap.key_one_untouched);
+                noteTwoImageView.setImageResource(R.mipmap.key_two_untouched);
+                noteThreeImageView.setImageResource(R.mipmap.key_three_touched);
+            }
+        });
+
+
+
+        // 谱号选择
+
+        clefBothImageView = (ImageView) findViewById(R.id.img_both_clef);
+        if (clefNumber == 1)
+        {
+            clefBothImageView.setImageResource(R.mipmap.sheet_both_touched);
+        }
+        else{
+            clefBothImageView.setImageResource(R.mipmap.sheet_both_untouched);
+        }
+
+        clefBothImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clefNumber = 1;
+                clefBothImageView.setImageResource(R.mipmap.sheet_both_touched);
+                clefTrebleImageView.setImageResource(R.mipmap.sheet_high_untouched);
+                clefBassImageView.setImageResource(R.mipmap.sheet_low_untouched);
+            }
+        });
+
+        clefTrebleImageView = (ImageView) findViewById(R.id.img_treble_clef);
+        if (clefNumber == 2)
+        {
+            clefTrebleImageView.setImageResource(R.mipmap.sheet_high_touched);
+        }
+        else{
+            clefTrebleImageView.setImageResource(R.mipmap.sheet_high_untouched);
+
+        }
+        clefTrebleImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clefNumber = 2;
+                clefBothImageView.setImageResource(R.mipmap.sheet_both_untouched);
+                clefTrebleImageView.setImageResource(R.mipmap.sheet_high_touched);
+                clefBassImageView.setImageResource(R.mipmap.sheet_low_untouched);
+            }
+        });
+
+        clefBassImageView = (ImageView) findViewById(R.id.img_bass_clef);
+        if (clefNumber == 3)
+        {
+            clefBassImageView.setImageResource(R.mipmap.sheet_low_touched);
+        }
+        else{
+            clefBassImageView.setImageResource(R.mipmap.sheet_low_untouched);
+
+        }
+        clefBassImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clefNumber = 3;
+                clefBothImageView.setImageResource(R.mipmap.sheet_both_untouched);
+                clefTrebleImageView.setImageResource(R.mipmap.sheet_high_untouched);
+                clefBassImageView.setImageResource(R.mipmap.sheet_low_touched);
+            }
+        });
+
+
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                myView.start();
             }
         });
     }
