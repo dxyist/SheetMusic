@@ -1,5 +1,6 @@
 package com.ecnu.leondu.sheetmusic;
 
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Build;
@@ -13,6 +14,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 
 public class ReadingActivity extends AppCompatActivity {
@@ -30,6 +32,8 @@ public class ReadingActivity extends AppCompatActivity {
     private ImageView clefBothImageView;
     private ImageView clefTrebleImageView;
     private ImageView clefBassImageView;
+
+    private Button startButton;
 
 
     @Override
@@ -50,8 +54,8 @@ public class ReadingActivity extends AppCompatActivity {
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
                 //获取样式中的属性值
                 TypedValue typedValue = new TypedValue();
-                this.getTheme().resolveAttribute(android.R.attr.colorAccent, typedValue, true);
-                int[] attribute = new int[]{android.R.attr.colorAccent};
+                this.getTheme().resolveAttribute(android.R.attr.colorPrimary, typedValue, true);
+                int[] attribute = new int[]{android.R.attr.colorPrimary};
                 TypedArray array = this.obtainStyledAttributes(typedValue.resourceId, attribute);
                 int color = array.getColor(0, Color.TRANSPARENT);
                 array.recycle();
@@ -60,13 +64,21 @@ public class ReadingActivity extends AppCompatActivity {
         }
         setSupportActionBar(toolbar);
 
+        startButton = (Button) findViewById(R.id.btn_beginning);
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO 听力部分要处理
+                Intent intent = new Intent(ReadingActivity.this, WorkActivity.class);
+                startActivity(intent);
+            }
+        });
+
         myView = (MyView) findViewById(R.id.anim_great);
         noteOneImageView = (ImageView) findViewById(R.id.img_notes_one);
-        if (noteNumber == 1)
-        {
+        if (noteNumber == 1) {
             noteOneImageView.setImageResource(R.mipmap.key_one_touched);
-        }
-        else{
+        } else {
             noteOneImageView.setImageResource(R.mipmap.key_one_untouched);
         }
 
@@ -81,11 +93,9 @@ public class ReadingActivity extends AppCompatActivity {
         });
 
         noteTwoImageView = (ImageView) findViewById(R.id.img_notes_two);
-        if (noteNumber == 2)
-        {
+        if (noteNumber == 2) {
             noteTwoImageView.setImageResource(R.mipmap.key_two_touched);
-        }
-        else{
+        } else {
             noteTwoImageView.setImageResource(R.mipmap.key_two_untouched);
 
         }
@@ -100,11 +110,9 @@ public class ReadingActivity extends AppCompatActivity {
         });
 
         noteThreeImageView = (ImageView) findViewById(R.id.img_notes_three);
-        if (noteNumber == 3)
-        {
+        if (noteNumber == 3) {
             noteThreeImageView.setImageResource(R.mipmap.key_three_touched);
-        }
-        else{
+        } else {
             noteThreeImageView.setImageResource(R.mipmap.key_three_untouched);
 
         }
@@ -119,15 +127,12 @@ public class ReadingActivity extends AppCompatActivity {
         });
 
 
-
         // 谱号选择
 
         clefBothImageView = (ImageView) findViewById(R.id.img_both_clef);
-        if (clefNumber == 1)
-        {
+        if (clefNumber == 1) {
             clefBothImageView.setImageResource(R.mipmap.sheet_both_touched);
-        }
-        else{
+        } else {
             clefBothImageView.setImageResource(R.mipmap.sheet_both_untouched);
         }
 
@@ -142,11 +147,9 @@ public class ReadingActivity extends AppCompatActivity {
         });
 
         clefTrebleImageView = (ImageView) findViewById(R.id.img_treble_clef);
-        if (clefNumber == 2)
-        {
+        if (clefNumber == 2) {
             clefTrebleImageView.setImageResource(R.mipmap.sheet_high_touched);
-        }
-        else{
+        } else {
             clefTrebleImageView.setImageResource(R.mipmap.sheet_high_untouched);
 
         }
@@ -161,11 +164,9 @@ public class ReadingActivity extends AppCompatActivity {
         });
 
         clefBassImageView = (ImageView) findViewById(R.id.img_bass_clef);
-        if (clefNumber == 3)
-        {
+        if (clefNumber == 3) {
             clefBassImageView.setImageResource(R.mipmap.sheet_low_touched);
-        }
-        else{
+        } else {
             clefBassImageView.setImageResource(R.mipmap.sheet_low_untouched);
 
         }
@@ -180,9 +181,8 @@ public class ReadingActivity extends AppCompatActivity {
         });
 
 
-
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setVisibility(View.INVISIBLE);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

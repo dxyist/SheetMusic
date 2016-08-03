@@ -113,13 +113,14 @@ public class MyView extends View {
 
                 alphaValue = alphaChangeing(alphaValue);
 
-                postInvalidate();
-
-                if (alphaValue >= 255)
+                if (alphaValue <0)
                 {
                     alphaValue = 0;
                     break;
                 }
+                postInvalidate();
+
+
 
                 try {
                     sleep(30);
@@ -135,19 +136,35 @@ public class MyView extends View {
     //TODO 透明度变化曲线(考虑 sin 函数和 cos 函数结合)
     private int alphaChangeing(int alphaValue) {
 
-        if (alphaValue < 150) {
-            alphaValue += 15;
-        } else if (alphaValue < 220)
+        // zengjia
+        if (alphaValue % 2 ==0)
         {
-            alphaValue += 5;
-        }else if(alphaValue < 240)
-        {
-            alphaValue +=3;
+            if (alphaValue < 150) {
+                alphaValue += 16;
+            } else if (alphaValue < 210)
+            {
+                alphaValue += 6;
+            }else if(alphaValue < 240)
+            {
+                alphaValue +=4;
+            }else
+            {
+                alphaValue +=2;
+            }
         }else
         {
-            alphaValue +=1;
+            if (alphaValue > 240) {
+                alphaValue -= 4;
+            } else if (alphaValue > 210)
+            {
+                alphaValue -= 16;
+            }else {
+                alphaValue -= 50;
+            }
         }
 
+        if(alphaValue > 255)
+            alphaValue = 255;
 
         return alphaValue;
     }
